@@ -1,10 +1,5 @@
 <div class="card" style="width: 18rem;">
-  <img src="assets/img/categories/character.jpg" class="card-img-top" alt="..." />
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">
-        Luke Skywalker
-    </p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
+  <img src="assets/img/categories/{{cardName}}.jpg" class="card-img-top" alt="{{cardName}}" />
+  <!-- <span class="category-title tc-red-600 display-block jedi-font">{{cardName | titlecase}}</span> -->
+  <span class="category-title {{color}} display-block jedi-font">{{cardName | titlecase}}</span>
 </div>

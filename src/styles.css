@@ -104,3 +104,13 @@ animation:move-twink-back 200s linear infinite;
 -webkit-animation:move-clouds-back 200s linear infinite;
 animation:move-clouds-back 200s linear infinite;
 }
+
+@font-face {
+  font-family: jedi;
+  src: url(assets/fonts/Starjedi.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: jedi-empty;
+  src: url(assets/fonts/Starjhol.ttf) format("truetype");
+}

@@ -1,0 +1,36 @@
+/* .card {
+
+} */
+
+.category-title {
+  display: block;
+  position: absolute;
+  bottom: 20%;
+  padding-left: 1em;
+  background-color: rgba(0,0,0,.4);
+}
+
+.red {
+  color: #E53935;
+}
+
+.yellow {
+  color: #FFEE58;
+}
+
+.orange {
+  color: #F4511E;
+}
+
+.white {
+  color: #FFF;
+}
+
+.blue {
+  color: #90CAF9;
+}
+
+.jedi-font {
+  font-family: jedi, arial;
+  font-size: 1.2em;
+}

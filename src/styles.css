@@ -9,14 +9,86 @@ https://mkrtchyan.ga
   padding: 0;
 }
 header {
-  background-color:rgba(33, 33, 33, 0.9);
-  color:#ffffff;
   display:block;
   font: 14px/1.3 Arial,sans-serif;
-  height:50px;
+  height:200px;
   position:relative;
   z-index:5;
 }
+
+footer {
+  font-size: .75em;
+  color: #FFF;
+  width: 80%;
+  margin: 0 auto;
+  clear: both;
+  height: 100px;
+  display: table;
+}
+
+footer .footer-content {
+  display: table-cell;
+  vertical-align: bottom;
+}
+
+footer .copyright {
+  float: right;
+  letter-spacing: .25em;
+}
+
+footer .find-me {
+  padding-bottom: 2em;
+}
+
+footer .disclaimer {
+  padding-bottom: 1em;
+}
+
+.logo{
+  text-align: center;
+  font-family: jedi-outline;
+  font-size: 4em;
+}
+
+.logo-link {
+  font-family: jedi, arial;
+  font-size: 1.2em;
+  color: #FFEE58;
+
+}
+
+.subtitle {
+  font-family: jedi-subtitle;
+  font-size: .75em;
+  margin-top: -1em;
+  margin-bottom: -2em;
+}
+
+.red {
+  color: #E53935;
+}
+
+.yellow {
+  color: #FFEE58;
+}
+
+.orange {
+  color: #F4511E;
+}
+
+.white {
+  color: #FFF;
+}
+
+.blue {
+  color: #90CAF9;
+}
+
+.jedi-font {
+  font-family: jedi, arial;
+  font-size: 1.2em;
+}
+
 h2{
   margin-top: 30px;
   text-align: center;
@@ -27,10 +99,6 @@ header h2{
   padding: 10px 0;
   width: 80%;
   text-align: center;
-}
-header a, a:visited {
-  text-decoration:none;
-  color:#fcfcfc;
 }
 
 @keyframes move-twink-back {

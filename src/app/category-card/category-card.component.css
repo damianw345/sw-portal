@@ -11,28 +11,3 @@ border-style: none;
   background-color: rgba(0,0,0,.4);
   width: 100%;
 }
-
-.red {
-  color: #E53935;
-}
-
-.yellow {
-  color: #FFEE58;
-}
-
-.orange {
-  color: #F4511E;
-}
-
-.white {
-  color: #FFF;
-}
-
-.blue {
-  color: #90CAF9;
-}
-
-.jedi-font {
-  font-family: jedi, arial;
-  font-size: 1.2em;
-}

@@ -1,23 +1,26 @@
 <div class="container">
   <div class="row">
     <div class="col-sm">
-      <app-card [color]="'red'" [cardName]="'characters'"></app-card>
+      <app-category-card [color]="'red'" [cardName]="'characters'"></app-category-card>
     </div>
     <div class="col-sm">
-      <app-card [color]="'yellow'" [cardName]="'films'"></app-card>
+      <app-category-card [color]="'yellow'" [cardName]="'films'"></app-category-card>
     </div>
     <div class="col-sm">
-      <app-card [color]="'orange'" [cardName]="'species'"></app-card>
+      <app-category-card [color]="'orange'" [cardName]="'species'"></app-category-card>
     </div>
     <div class="col-sm">
-      <app-card [color]="'white'" [cardName]="'starships'"></app-card>
+      <app-category-card [color]="'white'" [cardName]="'starships'"></app-category-card>
     </div>
         <div class="col-sm">
-      <app-card [color]="'blue'" [cardName]="'vehicles'"></app-card>
+      <app-category-card [color]="'blue'" [cardName]="'vehicles'"></app-category-card>
     </div>
         <div class="col-sm">
-      <app-card [color]="'yellow'" [cardName]="'planets'"></app-card>
+      <app-category-card [color]="'yellow'" [cardName]="'planets'"></app-category-card>
     </div>
   </div>
+  <app-item-card></app-item-card>
+
+
   <router-outlet></router-outlet>
 </div>

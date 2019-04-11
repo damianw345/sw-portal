@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { CategoryCardComponent } from './category-card/category-card.component';
 import { CardDisplayerComponent } from './card-displayer/card-displayer.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ResourceCardComponent } from './resource-card/resource-card.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     CategoryCardComponent,
     CardDisplayerComponent,
     DashboardComponent,
+    ResourceCardComponent,
   ],
   imports: [
     BrowserModule,

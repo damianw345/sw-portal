@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CardDisplayerComponent } from './card-displayer/card-displayer.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/',
-    pathMatch: 'full'
+    pathMatch: 'full',
+    component: DashboardComponent
   },
   {
     path: 'characters',

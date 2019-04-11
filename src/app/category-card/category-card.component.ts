@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { SwapiService } from '../swapi.service';
 
 @Component({
   selector: 'app-category-card',
@@ -12,8 +13,6 @@ export class CategoryCardComponent implements OnInit {
 
   @Input()
   color: string;
-
-  constructor() { }
 
   ngOnInit() {
   }

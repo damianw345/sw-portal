@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SwapiService } from '../swapi.service';
 
 @Component({
   selector: 'app-card-displayer',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CardDisplayerComponent implements OnInit {
 
-  constructor() { }
+  constructor(private swapiService: SwapiService) { }
 
   ngOnInit() {
+    this.swapiService.getResource('people', 1).subscribe(next => console.info(next.name));
   }
 
 }

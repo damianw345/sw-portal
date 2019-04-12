@@ -1,9 +1,6 @@
-import { ResourceCardComponent } from './../resource-card/resource-card.component';
-import { Component, OnInit } from '@angular/core';
-import { SwapiService } from '../swapi.service';
-import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
-import { PageableResults } from '../pageable-results';
+import {Component, OnInit} from '@angular/core';
+import {SwapiService} from '../swapi.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-card-displayer',

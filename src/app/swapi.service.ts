@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { PageableResults } from './pageable-results';
+import { PageableResults } from './model/pageable-results';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SwapiService {
 
-  private baseUrl = "https://swapi.co/api";
+  private baseUrl = 'https://swapi.co/api';
 
   constructor(private http: HttpClient) { }
 

@@ -1,11 +1,9 @@
-<p style="color:white">card-displayer works!</p>
-
 <div style="min-height: calc(100vh - 300px);">
   <div class="container">
     <div class="row">
       <div class="col-sm" *ngFor="let result of results">
-        <app-resource-card></app-resource-card>
-        <p style="color:white">card-displayer works!</p>
+        <app-resource-card itemId={{getIdFromUrl(result.url)}} itemName={{result.name}}
+                           resourceType={{resourceType}}></app-resource-card>
       </div>
     </div>
   </div>

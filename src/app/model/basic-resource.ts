@@ -1,7 +1,7 @@
 export class BasicResource {
 
   name?: string;
-  titile?: string;
+  title?: string;
   created: Date;
   edited: Date;
   url: string;

@@ -1,9 +1,10 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-2" [class.offset-md-1]="i == 0 || i == 5" *ngFor="let result of results; let i = index">
-      <app-resource-card itemId={{getIdFromUrl(result.url)}} itemName={{result.name}}
-                         resourceType={{resourceType}}></app-resource-card>
+      <app-resource-card itemId={{getIdFromUrl(result.url)}}
+                         resourceType={{resourceType}}
+                         itemName={{getNameOrTitle(result)}}>
+      </app-resource-card>
     </div>
   </div>
 </div>
-

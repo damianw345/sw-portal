@@ -34,4 +34,9 @@ export class CardDisplayerComponent implements OnInit {
   private getSwapiPath(path: string): string {
     return path === 'characters' ? 'people' : path;
   }
+
+  private getNameOrTitle(result: BasicResource): string {
+    return result.name || result.title;
+  }
+
 }

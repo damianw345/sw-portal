@@ -10,8 +10,13 @@ import {BasicResource} from '../model/basic-resource';
 })
 export class CardDisplayerComponent implements OnInit {
 
-  results: BasicResource[];
+  pageResults: BasicResource[];
   resourceType: string;
+  totalItems: number;
+  currentPage: number;
+  totalPages: number;
+  next: string;
+  prev: string;
 
   constructor(
     private swapiService: SwapiService,
@@ -23,12 +28,27 @@ export class CardDisplayerComponent implements OnInit {
     this.resourceType = this.route.snapshot.url[0].path;
     const path = this.getSwapiPath(this.resourceType);
 
-    this.swapiService.getResources(path).subscribe(pageableResults => this.results = pageableResults.results);
+    this.swapiService.getResources(path).subscribe(pageableResults => {
+      this.pageResults = pageableResults.results;
+      this.totalItems = pageableResults.count;
+
+      this.currentPage = pageableResults.next ?
+        (this.getCurrentPageNumberFromUrl(pageableResults.next) - 1) :
+        (this.getCurrentPageNumberFromUrl(pageableResults.previous) + 1);
+
+      this.next = pageableResults.next;
+      this.prev = pageableResults.previous;
+      this.totalPages = this.getTotalPages(10, this.totalItems);
+    });
   }
 
   private getIdFromUrl(url: string): number {
     url = url.slice(0, -1); // remove trailing slash
     return +url.substring(url.lastIndexOf('/') + 1); // get id
+  }
+
+  private getCurrentPageNumberFromUrl(url: string): number {
+    return +url.substring(url.lastIndexOf('=') + 1);
   }
 
   private getSwapiPath(path: string): string {
@@ -37,6 +57,10 @@ export class CardDisplayerComponent implements OnInit {
 
   private getNameOrTitle(result: BasicResource): string {
     return result.name || result.title;
+  }
+
+  private getTotalPages(itemsPerPage: number, totalItems: number): number {
+    return totalItems % itemsPerPage === 0 ? (totalItems / itemsPerPage) : (totalItems / itemsPerPage + 1);
   }
 
 }

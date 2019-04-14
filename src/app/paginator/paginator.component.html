@@ -1,0 +1,45 @@
+<nav>
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" href="{{prev}}"><</a></li>
+
+
+    <ng-container
+      *ngIf="currentPage === 1 || currentPage === 2 || currentPage === totalPages || currentPage === totalPages - 1; then boundary; else middle">
+    </ng-container>
+
+    <ng-template #boundary>
+
+      <ng-container *ngIf="currentPage === 1">
+        <li *ngFor="let i of [0, 1, 2, 3, 4]" class="page-item">
+          <a class="page-link" href="#">{{currentPage + i}}</a>
+        </li>
+      </ng-container>
+
+      <ng-container *ngIf="currentPage === 2">
+        <li class="page-item"><a class="page-link" href="#">{{currentPage - 1}}</a></li>
+        <li *ngFor="let i of [0, 1, 2, 3]" class="page-item"><a class="page-link" href="#">{{currentPage + i}}</a></li>
+      </ng-container>
+
+      <ng-container *ngIf="currentPage === totalPages - 1">
+        <li *ngFor="let i of [3, 2, 1, 0]" class="page-item"><a class="page-link" href="#">{{currentPage - i}}</a></li>
+        <li class="page-item"><a class="page-link" href="#">{{currentPage + 1}}</a></li>
+      </ng-container>
+
+      <ng-container *ngIf="currentPage === totalPages">
+        <li *ngFor="let i of [4, 3, 2, 1, 0]" class="page-item"><a class="page-link" href="#">{{currentPage - i}}</a>
+        </li>
+      </ng-container>
+
+    </ng-template>
+
+    <ng-template #middle>
+      <li class="page-item"><a class="page-link" href="#">{{currentPage - 2 }}</a></li>
+      <li class="page-item"><a class="page-link" href="#">{{currentPage - 1 }}</a></li>
+      <li class="page-item"><a class="page-link" href="#">{{currentPage}}</a></li>
+      <li class="page-item"><a class="page-link" href="#">{{currentPage + 1}}</a></li>
+      <li class="page-item"><a class="page-link" href="#">{{currentPage + 2}}</a></li>
+    </ng-template>
+
+    <li class="page-item"><a class="page-link" href="{{next}}">></a></li>
+  </ul>
+</nav>

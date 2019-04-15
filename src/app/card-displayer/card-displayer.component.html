@@ -1,6 +1,8 @@
 <div class="container-fluid">
 
-  <app-paginator [currentPage]="currentPage" [next]="next" [totalPages]="totalPages" prev="prev"></app-paginator>
+  <div class="row" class="offset-10">
+    <app-paginator [currentPage]="currentPage" [resourceType]="resourceType" [totalPages]="totalPages"></app-paginator>
+  </div>
 
   <div class="row">
     <div class="col-sm-2" [class.offset-md-1]="i == 0 || i == 5" *ngFor="let result of pageResults; let i = index">

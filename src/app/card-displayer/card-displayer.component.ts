@@ -25,6 +25,14 @@ export class CardDisplayerComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.updatePageItems();
+  }
+
+  private onPageNumberChanged(clicked: string) {
+    console.log(clicked);
+  }
+
+  private updatePageItems(): void {
     this.resourceType = this.route.snapshot.url[0].path;
     const path = this.getSwapiPath(this.resourceType);
 

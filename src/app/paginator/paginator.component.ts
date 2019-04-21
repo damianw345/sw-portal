@@ -1,12 +1,21 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  SimpleChanges,
+  OnChanges
+} from '@angular/core';
+
+const range = (start: number, end: number) =>
+  Array.from({ length: end - start }, (_v, k) => k + start);
 
 @Component({
   selector: 'app-paginator',
   templateUrl: './paginator.component.html',
   styleUrls: ['./paginator.component.css']
 })
-export class PaginatorComponent implements OnInit {
-
+export class PaginatorComponent implements OnChanges {
   @Input()
   currentPage: number;
   @Input()
@@ -17,40 +26,41 @@ export class PaginatorComponent implements OnInit {
   @Output()
   pageNumberChange = new EventEmitter<string>();
 
-  constructor() {
-  }
+  pages: Array<number>;
+  currentPages: Array<number>;
 
-  ngOnInit() {
+  constructor() {}
+
+  ngOnChanges(changes: SimpleChanges) {
+    this.pages = range(1, this.totalPages + 1);
+
+    // if (changes["currentPage"]) {}
+    if (this.currentPage && this.totalPages) {
+      this.currentPages = this.getPagesNumbers();
+    }
   }
 
   public pageNumberChanged(event: any): void {
     this.pageNumberChange.emit(event.target.innerText);
   }
 
-  private getRelativePagesNumbers(): Array<number> {
-    let pageNumbers = [];
+  private getPagesNumbers(): Array<number> {
+    const pageNumbers = [];
 
-    switch (this.currentPage) {
-      // boundary cases
-      case 1:
-        pageNumbers = [0, 1, 2, 3, 4];
-        break;
-      case 2:
-        pageNumbers = [0, 1, 2, 3];
-        break;
-      case this.totalPages - 1:
-        pageNumbers = [-3, -2, -1, 0];
-        break;
-      case this.totalPages:
-        pageNumbers = [-4, -3, -2, -1, 0];
-        break;
+    const currentPage = this.currentPage;
+    const totalPages = this.totalPages;
+    const pages = this.pages;
 
-      // middle case
-      default:
-        pageNumbers = [-2, -1, 0, 1, 2];
+    const min = currentPage - 2;
+    const max = currentPage + 2;
+
+    if (min <= 0) {
+      pageNumbers.push(...pages.slice(0, 5));
+    } else if (max > totalPages) {
+      pageNumbers.push(...pages.slice(-5, pages.length));
+    } else {
+      pageNumbers.push(...pages.slice(min - 1, max));
     }
-
     return pageNumbers;
   }
-
 }

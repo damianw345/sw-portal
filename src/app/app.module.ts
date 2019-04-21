@@ -8,7 +8,6 @@ import { CategoryCardComponent } from './category-card/category-card.component';
 import { CardDisplayerComponent } from './card-displayer/card-displayer.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ResourceCardComponent } from './resource-card/resource-card.component';
-import {NgxPaginationModule} from 'ngx-pagination';
 import { PaginatorComponent } from './paginator/paginator.component';
 
 
@@ -25,7 +24,6 @@ import { PaginatorComponent } from './paginator/paginator.component';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    NgxPaginationModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

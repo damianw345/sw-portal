@@ -7,9 +7,9 @@
       </li>
     </ng-container>
 
-    <li *ngFor="let i of getRelativePagesNumbers()" class="page-item">
-      <a [queryParams]="{ page: currentPage + i}" [routerLink]="['/' + resourceType]"
-         class="page-link">{{currentPage + i}}</a>
+    <li *ngFor="let i of currentPages" class="page-item">
+        <a [queryParams]="{ page: i}" [routerLink]="['/' + resourceType]"
+           class="page-link">{{i}}</a>
     </li>
 
     <ng-container *ngIf="currentPage + 1 <= totalPages">

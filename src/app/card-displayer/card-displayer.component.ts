@@ -74,7 +74,8 @@ export class CardDisplayerComponent implements OnInit {
   }
 
   private getTotalPages(itemsPerPage: number, totalItems: number): number {
-    return totalItems % itemsPerPage === 0 ? (totalItems / itemsPerPage) : (totalItems / itemsPerPage + 1);
+    const floor = Math.floor(totalItems / itemsPerPage);
+    return totalItems % itemsPerPage === 0 ? floor : floor + 1;
   }
 
 }

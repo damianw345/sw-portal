@@ -7,10 +7,12 @@
       </li>
     </ng-container>
 
-    <li *ngFor="let i of currentPages" class="page-item">
-        <a [queryParams]="{ page: i}" [routerLink]="['/' + resourceType]"
-           class="page-link">{{i}}</a>
-    </li>
+    <ng-container *ngIf="totalPages > 1">
+      <li *ngFor="let i of currentPages" class="page-item">
+          <a [queryParams]="{ page: i}" [routerLink]="['/' + resourceType]"
+            class="page-link">{{i}}</a>
+      </li>
+    </ng-container>
 
     <ng-container *ngIf="currentPage + 1 <= totalPages">
       <li class="page-item">

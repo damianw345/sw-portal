@@ -12,12 +12,8 @@ export class SwapiService {
 
   constructor(private http: HttpClient) { }
 
-  // getResources(type: string): Observable<any[]> {
-  //   return this.http.get<any[]>(`${this.baseUrl}/${type}/`);
-  // }
-
-  getResources(type: string): Observable<PageableResults> {
-    return this.http.get<PageableResults>(`${this.baseUrl}/${type}/`);
+  getResources(type: string, pageId): Observable<PageableResults> {
+    return this.http.get<PageableResults>(`${this.baseUrl}/${type}/?page=${pageId}`);
   }
 
   getResource(type: string, id: number): Observable<any> {

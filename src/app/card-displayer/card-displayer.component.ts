@@ -29,20 +29,26 @@ export class CardDisplayerComponent implements OnInit {
   }
 
   private onPageNumberChanged(clicked: string) {
-    console.log(clicked);
+    let pageId = 0;
+    if (clicked === '<') {
+      pageId = this.currentPage - 1;
+    } else if (clicked === '>') {
+      pageId = this.currentPage + 1;
+    } else {
+      pageId = +clicked;
+    }
+    this.updatePageItems(pageId);
   }
 
-  private updatePageItems(): void {
+  private updatePageItems(pageId = 1): void {
     this.resourceType = this.route.snapshot.url[0].path;
     const path = this.getSwapiPath(this.resourceType);
 
-    this.swapiService.getResources(path).subscribe(pageableResults => {
+    this.swapiService.getResources(path, pageId).subscribe(pageableResults => {
       this.pageResults = pageableResults.results;
       this.totalItems = pageableResults.count;
 
-      this.currentPage = pageableResults.next ?
-        (this.getCurrentPageNumberFromUrl(pageableResults.next) - 1) :
-        (this.getCurrentPageNumberFromUrl(pageableResults.previous) + 1);
+      this.currentPage = pageId;
 
       this.next = pageableResults.next;
       this.prev = pageableResults.previous;

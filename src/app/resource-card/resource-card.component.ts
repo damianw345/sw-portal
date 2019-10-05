@@ -14,9 +14,17 @@ export class ResourceCardComponent implements OnInit {
   @Input()
   resourceType: string;
 
-  constructor() { }
+  private pictureUrl: string;
+
+  constructor() {
+  }
 
   ngOnInit() {
+    this.pictureUrl = `assets/img/${this.resourceType}/${this.itemId}.jpg`;
+  }
+
+  setDefaultPicture() {
+    this.pictureUrl = 'assets/img/placeholder.jpg';
   }
 
 }

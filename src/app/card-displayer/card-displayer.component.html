@@ -1,16 +1,18 @@
 <div class="container-fluid">
 
-  <div class="row" class="offset-10">
+  <div class="row offset-10">
     <app-paginator (pageNumberChange)="onPageNumberChanged($event)" [currentPage]="currentPage"
                    [resourceType]="resourceType" [totalPages]="totalPages"></app-paginator>
   </div>
 
   <div class="row">
     <div class="col-sm-2" [class.offset-md-1]="i == 0 || i == 5" *ngFor="let result of pageResults; let i = index">
-      <app-resource-card itemId={{getIdFromUrl(result.url)}}
-                         resourceType={{resourceType}}
-                         itemName={{getNameOrTitle(result)}}>
-      </app-resource-card>
+      <a routerLink="/{{resourceType}}/{{getIdFromUrl(result.url)}}">
+        <app-resource-card itemId="{{getIdFromUrl(result.url)}}"
+                           itemName="{{getNameOrTitle(result)}}"
+                           resourceType="{{resourceType}}">
+        </app-resource-card>
+      </a>
     </div>
   </div>
 </div>

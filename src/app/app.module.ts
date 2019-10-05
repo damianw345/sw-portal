@@ -1,14 +1,15 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {HttpClientModule} from '@angular/common/http';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { CategoryCardComponent } from './category-card/category-card.component';
-import { CardDisplayerComponent } from './card-displayer/card-displayer.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { ResourceCardComponent } from './resource-card/resource-card.component';
-import { PaginatorComponent } from './paginator/paginator.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {CategoryCardComponent} from './category-card/category-card.component';
+import {CardDisplayerComponent} from './card-displayer/card-displayer.component';
+import {DashboardComponent} from './dashboard/dashboard.component';
+import {ResourceCardComponent} from './resource-card/resource-card.component';
+import {PaginatorComponent} from './paginator/paginator.component';
+import {ResourceDetailCardComponent} from './resource-detail-card/resource-detail-card.component';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { PaginatorComponent } from './paginator/paginator.component';
     DashboardComponent,
     ResourceCardComponent,
     PaginatorComponent,
+    ResourceDetailCardComponent,
   ],
   imports: [
     BrowserModule,

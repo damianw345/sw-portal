@@ -30,7 +30,7 @@ export class CardDisplayerComponent implements OnInit {
   }
 
   private onPageNumberChanged(clicked: string) {
-    let pageId = 0;
+    let pageId = 1;
     if (clicked === '<') {
       pageId = this.currentPage - 1;
     } else if (clicked === '>') {
@@ -41,7 +41,7 @@ export class CardDisplayerComponent implements OnInit {
     this.updatePageItems(pageId);
   }
 
-  private updatePageItems(pageId = 0): void {
+  private updatePageItems(pageId = 1): void {
     this.resourceType = this.route.snapshot.url[0].path;
     const path = this.getSwapiPath(this.resourceType);
 

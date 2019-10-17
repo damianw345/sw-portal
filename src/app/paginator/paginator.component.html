@@ -8,7 +8,7 @@
     </ng-container>
 
     <ng-container *ngIf="totalPages > 1">
-      <li *ngFor="let i of currentPages" class="page-item">
+      <li *ngFor="let i of currentPages" class="page-item {{i === currentPage ? 'active': ''}}">
           <a [queryParams]="{ page: i}" [routerLink]="['/' + resourceType]"
             class="page-link">{{i}}</a>
       </li>

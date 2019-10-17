@@ -7,9 +7,9 @@
 
   <div class="row">
     <div class="col-sm-2" [class.offset-md-1]="i == 0 || i == 5" *ngFor="let result of pageResults; let i = index">
-      <a routerLink="/{{resourceType}}/{{getIdFromUrl(result.url)}}">
-        <app-resource-card itemId="{{getIdFromUrl(result.url)}}"
-                           itemName="{{getNameOrTitle(result)}}"
+      <a routerLink="/{{resourceType}}/{{getIdFromUrl(result.content.url)}}">
+        <app-resource-card itemId="{{getIdFromUrl(result.content.url)}}"
+                           itemName="{{getNameOrTitle(result.content)}}"
                            resourceType="{{resourceType}}">
         </app-resource-card>
       </a>

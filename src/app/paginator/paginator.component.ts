@@ -1,11 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  Output,
-  SimpleChanges,
-  OnChanges
-} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
 
 const range = (start: number, end: number) =>
   Array.from({ length: end - start }, (_v, k) => k + start);
@@ -34,8 +27,7 @@ export class PaginatorComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     this.pages = range(1, this.totalPages + 1);
 
-    // if (changes["currentPage"]) {}
-    if (this.currentPage && this.totalPages) {
+    if (this.currentPage >= 0 && this.totalPages) {
       this.currentPages = this.getPagesNumbers();
     }
   }

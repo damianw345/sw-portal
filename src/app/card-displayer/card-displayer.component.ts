@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {SwapiService} from '../swapi.service';
 import {ActivatedRoute} from '@angular/router';
 import {BasicResource} from '../model/basic-resource';
+import {Content} from '../model/pageable-results';
 
 @Component({
   selector: 'app-card-displayer',
@@ -10,7 +11,7 @@ import {BasicResource} from '../model/basic-resource';
 })
 export class CardDisplayerComponent implements OnInit {
 
-  pageResults: BasicResource[];
+  pageResults: Content[];
   resourceType: string;
   totalItems: number;
   currentPage: number;
@@ -40,29 +41,25 @@ export class CardDisplayerComponent implements OnInit {
     this.updatePageItems(pageId);
   }
 
-  private updatePageItems(pageId = 1): void {
+  private updatePageItems(pageId = 0): void {
     this.resourceType = this.route.snapshot.url[0].path;
     const path = this.getSwapiPath(this.resourceType);
 
     this.swapiService.getResources(path, pageId).subscribe(pageableResults => {
-      this.pageResults = pageableResults.results;
-      this.totalItems = pageableResults.count;
+      this.pageResults = pageableResults._embedded.documentList;
+      this.totalItems = pageableResults.page.totalElements;
 
       this.currentPage = pageId;
 
-      this.next = pageableResults.next;
-      this.prev = pageableResults.previous;
-      this.totalPages = this.getTotalPages(10, this.totalItems);
+      this.next = pageableResults._links.next ? pageableResults._links.next.href : null;
+      this.prev = pageableResults._links.prev ? pageableResults._links.prev.href : null;
+      this.totalPages = pageableResults.page.totalPages;
     });
   }
 
   private getIdFromUrl(url: string): number {
     url = url.slice(0, -1); // remove trailing slash
     return +url.substring(url.lastIndexOf('/') + 1); // get id
-  }
-
-  private getCurrentPageNumberFromUrl(url: string): number {
-    return +url.substring(url.lastIndexOf('=') + 1);
   }
 
   private getSwapiPath(path: string): string {
@@ -72,10 +69,4 @@ export class CardDisplayerComponent implements OnInit {
   private getNameOrTitle(result: BasicResource): string {
     return result.name || result.title;
   }
-
-  private getTotalPages(itemsPerPage: number, totalItems: number): number {
-    const floor = Math.floor(totalItems / itemsPerPage);
-    return totalItems % itemsPerPage === 0 ? floor : floor + 1;
-  }
-
 }

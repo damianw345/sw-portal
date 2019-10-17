@@ -14,7 +14,7 @@
       </li>
     </ng-container>
 
-    <ng-container *ngIf="currentPage + 1 <= totalPages">
+    <ng-container *ngIf="currentPage + 1 < totalPages">
       <li class="page-item">
         <a [queryParams]="{ page: currentPage + 1}" [routerLink]="['/' + resourceType]"
            class="page-link"> > </a>

@@ -1,5 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { SwapiService } from '../swapi.service';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-category-card',

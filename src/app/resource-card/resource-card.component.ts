@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import Utils from '../utils';
 
 @Component({
   selector: 'app-resource-card',
@@ -24,7 +25,7 @@ export class ResourceCardComponent implements OnInit {
   }
 
   setDefaultPicture() {
-    this.pictureUrl = 'assets/img/placeholder.jpg';
+    this.pictureUrl = Utils.defaultImageUrl;
   }
 
 }

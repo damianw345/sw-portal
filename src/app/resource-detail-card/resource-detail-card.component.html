@@ -1,3 +1,17 @@
-<p>
-  resource-detail-card works!
-</p>
+<div *ngIf="resourceDetailsToShow">
+  <div class="content">
+    <div class="card mb-3">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <img (error)="setDefaultPicture()" [src]="imageUrl" alt="Resource image" class="card-img">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h3 class="card-title">{{resourceName }}</h3>
+            <p *ngFor="let detail of resourceDetailsToShow"><strong>{{detail[0]}}:</strong> {{detail[1]}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

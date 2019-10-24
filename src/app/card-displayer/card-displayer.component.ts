@@ -3,6 +3,7 @@ import {SwapiService} from '../swapi.service';
 import {ActivatedRoute} from '@angular/router';
 import {BasicResource} from '../model/basic-resource';
 import {Content} from '../model/pageable-results';
+import Utils from '../utils';
 
 @Component({
   selector: 'app-card-displayer',
@@ -43,7 +44,7 @@ export class CardDisplayerComponent implements OnInit {
 
   private updatePageItems(pageId = 1): void {
     this.resourceType = this.route.snapshot.url[0].path;
-    const path = this.getSwapiPath(this.resourceType);
+    const path = Utils.mapResourceType(this.resourceType);
 
     this.swapiService.getResources(path, pageId).subscribe(pageableResults => {
       this.pageResults = pageableResults._embedded.documentList;
@@ -60,10 +61,6 @@ export class CardDisplayerComponent implements OnInit {
   private getIdFromUrl(url: string): number {
     url = url.slice(0, -1); // remove trailing slash
     return +url.substring(url.lastIndexOf('/') + 1); // get id
-  }
-
-  private getSwapiPath(path: string): string {
-    return path === 'characters' ? 'people' : path;
   }
 
   private getNameOrTitle(result: BasicResource): string {

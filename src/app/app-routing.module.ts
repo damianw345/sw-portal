@@ -1,8 +1,8 @@
-import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
-import {CardDisplayerComponent} from './card-displayer/card-displayer.component';
-import {ResourceDetailCardComponent} from './resource-detail-card/resource-detail-card.component';
-import {DashboardComponent} from './dashboard/dashboard.component';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { CardDisplayerComponent } from './card-displayer/card-displayer.component';
+import { ResourceDetailCardComponent } from './resource-detail-card/resource-detail-card.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
   {
@@ -69,4 +69,5 @@ const routes: Routes = [
   )],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

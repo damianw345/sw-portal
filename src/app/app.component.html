@@ -4,11 +4,12 @@
     <div class="logo">
       <div>
         <a [routerLink]="'/'"
-           style="text-decoration: none; color: #FFEE58; font-family: jedi;">star wars</a>
+           style="text-decoration: none; color: #FFEE58; font-family: jedi,sans-serif;">star wars</a>
       </div>
     </div>
   </header>
 
+  <app-breadcrumb></app-breadcrumb>
   <router-outlet></router-outlet>
 
   <footer>
@@ -19,10 +20,10 @@
       <div class="find-me">
         <span class="follow">FOLLOW ME:</span>
         <a href="https://www.google.com"
-        ><i class="mdi mdi-linkedin-box"></i> LinkedIn</a
+        ><em class="mdi mdi-linkedin-box"></em> LinkedIn</a
         >
         <a href="https://google.com"
-        ><i class="mdi mdi-github-box"></i> GitHub</a
+        ><em class="mdi mdi-github-box"></em> GitHub</a
         >
       </div>
       <div class="disclaimer">

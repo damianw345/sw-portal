@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {SwapiService} from '../swapi.service';
-import {ActivatedRoute} from '@angular/router';
-import {BasicResource} from '../model/basic-resource';
-import {Content} from '../model/pageable-results';
+import { Component, OnInit } from '@angular/core';
+import { SwapiService } from '../swapi.service';
+import { ActivatedRoute } from '@angular/router';
+import { BasicResource } from '../model/basic-resource';
+import { Content } from '../model/pageable-results';
 import Utils from '../utils';
 
 @Component({

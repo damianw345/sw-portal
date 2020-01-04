@@ -55,6 +55,10 @@ export class BreadcrumbComponent implements OnInit {
             origUrlParts.slice(0, i + 1).join('/')
           );
         });
+      if (this.breadcrumbs.some((breadcrumb: Breadcrumb) => breadcrumb.url === '/login')) {
+        // fixme - temporary workaround for hiding breadcrumbs when logging in
+        this.breadcrumbs = [];
+      }
     });
   }
 }

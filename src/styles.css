@@ -17,6 +17,11 @@ header {
   z-index: 5;
 }
 
+.material-icons.login-icon {
+  color: #FFEE58;
+  font-size: 48px;
+}
+
 footer {
   font-size: .75em;
   color: #FFF;

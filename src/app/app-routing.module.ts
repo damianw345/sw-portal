@@ -3,12 +3,18 @@ import { RouterModule, Routes } from '@angular/router';
 import { CardDisplayerComponent } from './card-displayer/card-displayer.component';
 import { ResourceDetailCardComponent } from './resource-detail-card/resource-detail-card.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
     component: DashboardComponent
+  },
+  {
+    path: 'login',
+    pathMatch: 'full',
+    component: LoginComponent
   },
   {
     path: 'characters',

@@ -11,6 +11,7 @@ import { ResourceCardComponent } from './resource-card/resource-card.component';
 import { PaginatorComponent } from './paginator/paginator.component';
 import { ResourceDetailCardComponent } from './resource-detail-card/resource-detail-card.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
     PaginatorComponent,
     ResourceDetailCardComponent,
     BreadcrumbComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

@@ -12,6 +12,9 @@ import { PaginatorComponent } from './paginator/paginator.component';
 import { ResourceDetailCardComponent } from './resource-detail-card/resource-detail-card.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { LoginComponent } from './login/login.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -30,6 +33,9 @@ import { LoginComponent } from './login/login.component';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

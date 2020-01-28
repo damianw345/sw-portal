@@ -8,7 +8,7 @@ import { PageableResults } from './model/pageable-results';
 })
 export class SwapiService {
 
-  private baseUrl = 'http://localhost:28080/api';
+  private baseUrl = 'http://localhost:28080/api/swapi';
 
   constructor(private http: HttpClient) { }
 

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import Utils from '../utils';
+import Utils from '../../utils';
 
 @Component({
   selector: 'app-resource-card',
@@ -15,7 +15,7 @@ export class ResourceCardComponent implements OnInit {
   @Input()
   resourceType: string;
 
-  private pictureUrl: string;
+  pictureUrl: string;
 
   constructor() {
   }

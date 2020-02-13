@@ -1,4 +1,4 @@
-import { BasicResource } from './basic-resource';
+import { BasicResource } from './swapi/basic-resource';
 
 class Page {
   size: number;

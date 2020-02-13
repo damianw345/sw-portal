@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CardDisplayerComponent } from './card-displayer/card-displayer.component';
-import { ResourceDetailCardComponent } from './resource-detail-card/resource-detail-card.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { LoginComponent } from './login/login.component';
+import { CardDisplayerComponent } from './components/card-displayer/card-displayer.component';
+import { ResourceDetailCardComponent } from './components/resource-detail-card/resource-detail-card.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
   {

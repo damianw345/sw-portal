@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
+import Utils from '../../utils';
 
 export interface Breadcrumb {
   label: string;
@@ -17,7 +18,7 @@ export class BreadcrumbComponent implements OnInit {
   constructor(private location: Location) {
   }
 
-  private breadcrumbs: Breadcrumb[] = [];
+  breadcrumbs: Breadcrumb[] = [];
   private rootBreadcrumb: Breadcrumb = {
     label: 'Home',
     url: ''
@@ -28,10 +29,6 @@ export class BreadcrumbComponent implements OnInit {
       label,
       url
     };
-  }
-
-  private static firstLetterToUppercase(s: string): string {
-    return s[0].toUpperCase() + s.slice(1);
   }
 
   private static removePaginationFrom(urlPart): string {
@@ -51,7 +48,7 @@ export class BreadcrumbComponent implements OnInit {
             return this.rootBreadcrumb;
           }
           return BreadcrumbComponent.buildBreadcrumb(
-            BreadcrumbComponent.firstLetterToUppercase(urlPart),
+            Utils.firstLetterToUppercase(urlPart),
             origUrlParts.slice(0, i + 1).join('/')
           );
         });

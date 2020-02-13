@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { SwapiService } from '../swapi.service';
-import Utils from '../utils';
+import { SwapiService } from '../../core/http/swapi.service';
+import Utils from '../../utils';
 
 @Component({
   selector: 'app-resource-detail-card',
@@ -12,7 +12,8 @@ export class ResourceDetailCardComponent implements OnInit {
 
   private resourceName: string;
   private imageUrl: string;
-  private resourceDetailsToShow: any;
+
+  resourceDetailsToShow: any;
 
   constructor(private swapiService: SwapiService,
               private activatedRoute: ActivatedRoute) {
@@ -35,12 +36,7 @@ export class ResourceDetailCardComponent implements OnInit {
     return Object.entries(resourceDetails)
       .filter(([_, value]) => !Array.isArray(value))
       .filter(([key, _]) => !['name', 'title', 'created', 'edited', 'url', 'homeworld'].includes(key))
-      .map(entry => [this.replaceUnderscoresAndFirstLetterToUppercase(entry[0]), entry[1]]);
-  }
-
-  private replaceUnderscoresAndFirstLetterToUppercase(input: string): string {
-    return input.charAt(0).toUpperCase() +
-      input.substring(1).replace(/_/g, ' ');
+      .map(entry => [Utils.replaceUnderscoresAndFirstLetterToUppercase(entry[0]), entry[1]]);
   }
 
   setDefaultPicture() {

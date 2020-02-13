@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { SwapiService } from '../swapi.service';
+import { SwapiService } from '../../core/http/swapi.service';
 import { ActivatedRoute } from '@angular/router';
-import { BasicResource } from '../model/basic-resource';
-import { Content } from '../model/pageable-results';
-import Utils from '../utils';
+import { BasicResource } from '../../core/model/swapi/basic-resource';
+import { Content } from '../../core/model/pageable-results';
+import Utils from '../../utils';
 
 @Component({
   selector: 'app-card-displayer',
@@ -30,8 +30,8 @@ export class CardDisplayerComponent implements OnInit {
     this.updatePageItems();
   }
 
-  private onPageNumberChanged(clicked: string) {
-    let pageId = 1;
+  onPageNumberChanged(clicked: string) {
+    let pageId: number;
     if (clicked === '<') {
       pageId = this.currentPage - 1;
     } else if (clicked === '>') {

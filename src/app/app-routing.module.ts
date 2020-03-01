@@ -4,12 +4,16 @@ import { CardDisplayerComponent } from './components/card-displayer/card-display
 import { ResourceDetailCardComponent } from './components/resource-detail-card/resource-detail-card.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginComponent } from './components/login/login.component';
+import { AuthGuard } from './core/guards/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    component: DashboardComponent
+    component: DashboardComponent,
+    canActivate: [
+      AuthGuard
+    ],
   },
   {
     path: 'login',

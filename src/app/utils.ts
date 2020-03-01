@@ -1,5 +1,5 @@
 import * as jwtDecode from 'jwt-decode';
-import { JwtJson } from './core/model/JwtJson';
+import { JwtJson } from './core/model/jwt-json';
 
 export default class Utils {
 

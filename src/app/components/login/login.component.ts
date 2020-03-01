@@ -1,5 +1,8 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UserService } from '../../core/service/user.service';
+import { LoginData } from '../../core/model/login-data';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,10 +13,9 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
 
-  @Input() error: string | null;
-  @Output() submitEM = new EventEmitter();
-
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder,
+              private userService: UserService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -25,7 +27,15 @@ export class LoginComponent implements OnInit {
 
   submit() {
     if (this.loginForm.valid) {
-      this.submitEM.emit(this.loginForm.value);
+      // use email as username
+      const loginData: LoginData = {username: this.loginForm.value.email, password: this.loginForm.value.password};
+      this.userService.login(loginData);
+      this.userService.isLogin$().subscribe(isLogin => {
+        if (isLogin) {
+          this.router.navigate(['']);
+        }
+      });
     }
   }
+
 }

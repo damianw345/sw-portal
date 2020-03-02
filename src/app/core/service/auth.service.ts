@@ -38,7 +38,7 @@ export class AuthService {
     localStorage.removeItem(LOCAL_STORAGE.TOKEN);
   }
 
-  private getTokenFromStorage(): string | null {
+  getTokenFromStorage(): string | null {
     return localStorage.getItem(LOCAL_STORAGE.TOKEN);
   }
 

@@ -22,7 +22,7 @@ export class UserService {
     });
   }
 
-  logout(loginData: LoginData): void {
+  logout(): void {
     this.currentUserSub.next(null);
     this.authService.clearToken();
   }

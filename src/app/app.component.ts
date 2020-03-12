@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserService } from './core/service/user.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'sw-portal';
+
+  constructor(private userService: UserService) {
+  }
+
+  logout(): void {
+    this.userService.logout();
+  }
 }

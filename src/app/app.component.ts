@@ -9,7 +9,7 @@ import { UserService } from './core/service/user.service';
 export class AppComponent {
   title = 'sw-portal';
 
-  constructor(private userService: UserService) {
+  constructor(public userService: UserService) {
   }
 
   logout(): void {

@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sw-portal-frontend
+  labels:
+    app: sw-portal-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sw-portal-frontend
+  template:
+    metadata:
+      labels:
+        app: sw-portal-frontend
+    spec:
+      containers:
+        - name: nginx
+          image: gcr.io/auspicious-lead-272321/sw-portal-frontend
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sw-portal-frontend
+  labels:
+    run: sw-portal-frontend
+spec:
+  type: LoadBalancer
+  ports:
+    - name: "app"
+      port: 80
+      targetPort: 80
+  selector:
+    app: sw-portal-frontend

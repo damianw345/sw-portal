@@ -3,6 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../core/service/user.service';
 import { LoginData } from '../../core/model/login-data';
 import { Router } from '@angular/router';
+import { RegistrationService } from '../../core/http/registration.service';
+import { catchError, tap } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +18,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private userService: UserService,
+              private registrationService: RegistrationService,
               private router: Router) {
   }
 
@@ -25,11 +29,10 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  submit() {
+  login(): void {
     if (this.loginForm.valid) {
       // use email as username
-      const loginData: LoginData = {username: this.loginForm.value.email, password: this.loginForm.value.password};
-      this.userService.login(loginData);
+      this.userService.login(this.buildLoginData());
       this.userService.isLogin$().subscribe(isLogin => {
         if (isLogin) {
           this.router.navigate(['']);
@@ -38,4 +41,24 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  register(): void {
+    if (this.loginForm.valid) {
+      this.registrationService.register(this.buildLoginData())
+        .pipe(
+          tap(registration => {
+            this.login();
+          }),
+          // TODO add error interceptor
+          catchError(err => {
+            console.error(err);
+            return throwError(err);
+          })
+        )
+        .subscribe();
+    }
+  }
+
+  private buildLoginData(): LoginData {
+    return {username: this.loginForm.value.email, password: this.loginForm.value.password};
+  }
 }

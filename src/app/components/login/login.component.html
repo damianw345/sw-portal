@@ -1,7 +1,7 @@
 <div class="wrapper">
   <mat-card class="transparent-background">
     <mat-card-content>
-      <form (ngSubmit)="submit()" [formGroup]="loginForm">
+      <form [formGroup]="loginForm">
         <article class="row justify-content-center">
           <div class="col-xl-3 col-lg-4 col-sm-6">
             <mat-form-field>
@@ -27,16 +27,19 @@
             <button [disabled]="loginForm.invalid"
                     class="w-100 p-0"
                     mat-stroked-button
-                    type="submit">
+                    (click)="login()"
+            >
               Login
             </button>
           </div>
         </div>
         <div class="row justify-content-center pt-2">
           <div class="col-lg-2 col-md-3 col-sm-3">
-            <button class="w-100 p-0"
+            <button (click)="register()"
+                    [disabled]="loginForm.invalid"
                     mat-stroked-button
-                    type="submit">
+                    class="w-100 p-0"
+            >
               Register
             </button>
           </div>

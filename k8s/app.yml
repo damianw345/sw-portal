@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: gcr.io/auspicious-lead-272321/sw-portal-frontend
+          image: gcr.io/sw-portal-project/sw-portal-frontend:latest
           ports:
             - containerPort: 80
 ---

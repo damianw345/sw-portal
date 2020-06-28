@@ -34,6 +34,13 @@ export class AuthService {
     });
   }
 
+  authenticateWithToken(token: string): Observable<CurrentUser> {
+    this.setTokenInStorage(token);
+    return new Observable(observer => {
+      observer.next(this.getCurrentUser((Utils.getDecodedJwtJson(token))));
+    });
+  }
+
   clearToken(): void {
     localStorage.removeItem(LOCAL_STORAGE.TOKEN);
   }

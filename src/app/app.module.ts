@@ -16,6 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { JwtInterceptor } from './core/http/jwt-interceptor';
+import { OAuthCallbackComponent } from './components/oauth-callback/o-auth-callback.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { JwtInterceptor } from './core/http/jwt-interceptor';
     ResourceDetailCardComponent,
     BreadcrumbComponent,
     LoginComponent,
+    OAuthCallbackComponent,
   ],
   imports: [
     BrowserModule,

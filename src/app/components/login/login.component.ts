@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { RegistrationService } from '../../core/http/registration.service';
 import { catchError, tap } from 'rxjs/operators';
 import { throwError } from 'rxjs';
+import { OAuthRedirectionUrlService } from '../../core/http/o-auth-redirection-url.service';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,8 @@ export class LoginComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private userService: UserService,
               private registrationService: RegistrationService,
-              private router: Router) {
+              private router: Router,
+              public oAuthRedirectionUrlService: OAuthRedirectionUrlService) {
   }
 
   ngOnInit(): void {
@@ -29,7 +31,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  login(): void {
+  loginWithPassword(): void {
     if (this.loginForm.valid) {
       // use email as username
       this.userService.login(this.buildLoginData());
@@ -46,7 +48,7 @@ export class LoginComponent implements OnInit {
       this.registrationService.register(this.buildLoginData())
         .pipe(
           tap(registration => {
-            this.login();
+            this.loginWithPassword();
           }),
           // TODO add error interceptor
           catchError(err => {

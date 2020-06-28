@@ -27,7 +27,7 @@
             <button [disabled]="loginForm.invalid"
                     class="w-100 p-0"
                     mat-stroked-button
-                    (click)="login()"
+                    (click)="loginWithPassword()"
             >
               Login
             </button>
@@ -47,24 +47,31 @@
 
         <div class="row justify-content-center pt-2">
           <div class="col-lg-2 col-md-3 col-sm-3">
-            <a class="btn btn-social btn-facebook w-100">
-              <span class="fab fa-facebook-square"></span> Sign in with Facebook
+            <a class="btn btn-social btn-facebook w-100"
+               href="{{oAuthRedirectionUrlService.buildFacebookRedirectionUrl()}}">
+              <span class="fab fa-facebook-square"></span>
+              Sign in with Facebook
             </a>
           </div>
         </div>
 
         <div class="row justify-content-center pt-2">
           <div class="col-lg-2 col-md-3 col-sm-3">
-            <a class="btn btn-social btn-google w-100">
-              <span class="fab fa-google"></span> Sign in with Google
+            <a class="btn btn-social btn-google w-100"
+               href="{{oAuthRedirectionUrlService.buildGoogleRedirectionUrl()}}">
+              <span class="fab fa-google"></span>
+              Sign in with Google
             </a>
           </div>
         </div>
 
         <div class="row justify-content-center pt-2">
           <div class="col-lg-2 col-md-3 col-sm-3">
-            <a class="btn btn-social btn-github w-100">
-              <span class="fab fa-github"></span> Sign in with Github
+            <!--              <a class="btn btn-social btn-github w-100" href="http://localhost:4200/api/oauth2/authorize/github?redirect_uri=http://localhost:4200/oauth2/callback">-->
+            <a class="btn btn-social btn-github w-100"
+               href="{{oAuthRedirectionUrlService.buildGithubRedirectionUrl()}}">
+              <span class="fab fa-github"></span>
+              Sign in with Github
             </a>
           </div>
         </div>

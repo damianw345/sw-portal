@@ -5,6 +5,8 @@ import { ResourceDetailCardComponent } from './components/resource-detail-card/r
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthGuard } from './core/guards/auth.guard';
+import { OAuthCallbackComponent } from './components/oauth-callback/o-auth-callback.component';
+import { OAuth2CallbackResolver } from './core/resolver/oauth2-callback-resolver.service';
 
 const routes: Routes = [
   {
@@ -21,52 +23,95 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
+    path: 'oauth2/callback',
+    component: OAuthCallbackComponent,
+    resolve: {
+      oauth2Resolver: OAuth2CallbackResolver
+    }
+  },
+  {
     path: 'characters',
-    component: CardDisplayerComponent
+    component: CardDisplayerComponent,
+    canActivate: [
+      AuthGuard
+    ],
   },
   {
     path: 'characters/:id',
-    component: ResourceDetailCardComponent
+    component: ResourceDetailCardComponent,
+    canActivate: [
+      AuthGuard
+    ],
   },
   {
     path: 'films',
-    component: CardDisplayerComponent
+    component: CardDisplayerComponent,
+    canActivate: [
+      AuthGuard
+    ],
   },
   {
     path: 'films/:id',
-    component: ResourceDetailCardComponent
+    component: ResourceDetailCardComponent,
+    canActivate: [
+      AuthGuard
+    ],
   },
   {
     path: 'planets',
-    component: CardDisplayerComponent
+    component: CardDisplayerComponent,
+    canActivate: [
+      AuthGuard
+    ],
   },
   {
     path: 'planets/:id',
-    component: ResourceDetailCardComponent
+    component: ResourceDetailCardComponent,
+    canActivate: [
+      AuthGuard
+    ],
   },
   {
     path: 'species',
-    component: CardDisplayerComponent
+    component: CardDisplayerComponent,
+    canActivate: [
+      AuthGuard
+    ],
   },
   {
     path: 'species/:id',
-    component: ResourceDetailCardComponent
+    component: ResourceDetailCardComponent,
+    canActivate: [
+      AuthGuard
+    ],
   },
   {
     path: 'starships',
-    component: CardDisplayerComponent
+    component: CardDisplayerComponent,
+    canActivate: [
+      AuthGuard
+    ],
   },
   {
     path: 'starships/:id',
-    component: ResourceDetailCardComponent
+    component: ResourceDetailCardComponent,
+    canActivate: [
+      AuthGuard
+    ],
   },
   {
     path: 'vehicles',
-    component: CardDisplayerComponent
+    component: CardDisplayerComponent,
+    canActivate: [
+      AuthGuard
+    ],
   },
   {
     path: 'vehicles/:id',
-    component: ResourceDetailCardComponent
+    component: ResourceDetailCardComponent,
+    canActivate: [
+      AuthGuard
+    ],
   },
   {
     path: '**',

@@ -22,6 +22,12 @@ export class UserService {
     });
   }
 
+  loginWithToken(token: string): void {
+    this.authService.authenticateWithToken(token).subscribe(currentUser => {
+      this.currentUserSub.next(currentUser);
+    });
+  }
+
   logout(): void {
     this.currentUserSub.next(null);
     this.authService.clearToken();

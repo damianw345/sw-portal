@@ -1,30 +1,29 @@
 import { BasicResource } from './swapi/basic-resource';
 
-class Page {
-  size: number;
+interface Pageable {
+  sort: Sort;
+  pageNumber: number;
+  pageSize: number;
+  offset: number;
+  unpaged: boolean;
+  paged: boolean;
+}
+
+interface Sort {
+  sorted: boolean;
+  unsorted: boolean;
+  empty: boolean;
+}
+
+export interface PageableResults {
+  content: BasicResource[]; // in fact API returns more detailed content
+  pageable: Pageable;
   totalElements: number;
   totalPages: number;
+  first: boolean;
+  last: boolean;
+  numberOfElements: number;
+  size: number;
   number: number;
-}
-
-class Links {
-  first: { href: string };
-  self: { href: string };
-  next?: { href: string };
-  prev?: { href: string };
-  last: { href: string };
-}
-
-export class Content {
-  content: BasicResource;
-}
-
-class Embedded {
-  documentList: Array<Content>;
-}
-
-export class PageableResults {
-  _embedded: Embedded;
-  _links: Links;
-  page: Page;
+  empty: boolean;
 }

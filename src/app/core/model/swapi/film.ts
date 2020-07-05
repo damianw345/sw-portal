@@ -1,16 +1,16 @@
 import { BasicResource } from './basic-resource';
 
-export class Film  extends BasicResource {
+export interface Film extends BasicResource {
 
-  episode_id: number;
-  opening_crawl: string;
+  episodeId: number;
+  openingCrawl: string;
   director: string;
   producer: string;
-  release_date: string;
-  characters: string[];
-  planets: string[];
-  starships: string[];
-  vehicles: string[];
-  species: string[];
+  releaseDate: string;
+  characters: number[];
+  planets: number[];
+  starships: number[];
+  vehicles: number[];
+  species: number[];
 
 }

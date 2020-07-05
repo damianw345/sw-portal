@@ -1,18 +1,18 @@
 import { BasicResource } from './basic-resource';
 
-export class Starship  extends BasicResource {
+export interface Starship extends BasicResource {
   model: string;
   manufacturer: string;
-  cost_in_credits: string;
+  costInCredits: string;
   length: string;
-  max_atmosphering_speed: string;
+  maxAtmospheringSpeed: string;
   crew: string;
   passengers: string;
-  cargo_capacity: string;
+  cargoCapacity: string;
   consumables: string;
-  hyperdrive_rating: string;
+  hyperdriveRating: string;
   MGLT: string;
-  starship_class: string;
-  pilots: any[];
-  films: string[];
+  starshipClass: string;
+  pilots: number[];
+  films: number[];
 }

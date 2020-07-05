@@ -1,14 +1,14 @@
 import { BasicResource } from './basic-resource';
 
-export class Planet  extends BasicResource {
-  rotation_period: string;
-  orbital_period: string;
+export interface Planet extends BasicResource {
+  rotationPeriod: string;
+  orbitalPeriod: string;
   diameter: string;
   climate: string;
   gravity: string;
   terrain: string;
-  surface_water: string;
+  surfaceWater: string;
   population: string;
-  residents: any[];
-  films: string[];
+  residents: number[];
+  films: number[];
 }

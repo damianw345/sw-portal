@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { SwapiService } from '../../core/http/swapi.service';
 import { ActivatedRoute } from '@angular/router';
-import { BasicResource } from '../../core/model/swapi/basic-resource';
-import { Content } from '../../core/model/pageable-results';
+import { PageableResults } from '../../core/model/pageable-results';
 import Utils from '../../utils';
+import { BasicResource } from '../../core/model/swapi/basic-resource';
 
 @Component({
   selector: 'app-card-displayer',
@@ -12,13 +12,11 @@ import Utils from '../../utils';
 })
 export class CardDisplayerComponent implements OnInit {
 
-  pageResults: Content[];
+  pageResults: BasicResource[];
   resourceType: string;
   totalItems: number;
   currentPage: number;
   totalPages: number;
-  next: string;
-  prev: string;
 
   constructor(
     private swapiService: SwapiService,
@@ -46,24 +44,11 @@ export class CardDisplayerComponent implements OnInit {
     this.resourceType = this.route.snapshot.url[0].path;
     const path = Utils.mapResourceType(this.resourceType);
 
-    this.swapiService.getResources(path, pageId).subscribe(pageableResults => {
-      this.pageResults = pageableResults._embedded.documentList;
-      this.totalItems = pageableResults.page.totalElements;
-
+    this.swapiService.getResources(path, pageId).subscribe((pageableResults: PageableResults) => {
+      this.pageResults = pageableResults.content;
+      this.totalItems = pageableResults.totalElements;
       this.currentPage = pageId;
-
-      this.next = pageableResults._links.next ? pageableResults._links.next.href : null;
-      this.prev = pageableResults._links.prev ? pageableResults._links.prev.href : null;
-      this.totalPages = pageableResults.page.totalPages;
+      this.totalPages = pageableResults.totalPages;
     });
-  }
-
-  private getIdFromUrl(url: string): number {
-    url = url.slice(0, -1); // remove trailing slash
-    return +url.substring(url.lastIndexOf('/') + 1); // get id
-  }
-
-  private getNameOrTitle(result: BasicResource): string {
-    return result.name || result.title;
   }
 }

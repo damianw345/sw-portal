@@ -1,16 +1,16 @@
 import { BasicResource } from './basic-resource';
 
-export class Vehicle  extends BasicResource {
+export interface Vehicle extends BasicResource {
   model: string;
   manufacturer: string;
-  cost_in_credits: string;
+  costInCredits: string;
   length: string;
-  max_atmosphering_speed: string;
+  maxAtmospheringSpeed: string;
   crew: string;
   passengers: string;
-  cargo_capacity: string;
+  cargoCapacity: string;
   consumables: string;
-  vehicle_class: string;
-  pilots: any[];
-  films: string[];
+  vehicleClass: string;
+  pilots: number[];
+  films: number[];
 }

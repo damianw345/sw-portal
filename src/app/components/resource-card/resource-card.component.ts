@@ -4,7 +4,7 @@ import Utils from '../../utils';
 @Component({
   selector: 'app-resource-card',
   templateUrl: './resource-card.component.html',
-  styleUrls: ['./resource-card.component.css']
+  styleUrls: ['./resource-card.component.scss']
 })
 export class ResourceCardComponent implements OnInit {
 

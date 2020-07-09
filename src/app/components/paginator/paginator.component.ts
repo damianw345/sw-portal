@@ -6,7 +6,7 @@ const range = (start: number, end: number) =>
 @Component({
   selector: 'app-paginator',
   templateUrl: './paginator.component.html',
-  styleUrls: ['./paginator.component.css']
+  styleUrls: ['./paginator.component.scss']
 })
 export class PaginatorComponent implements OnChanges {
   @Input()

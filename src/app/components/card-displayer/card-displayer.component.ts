@@ -8,7 +8,7 @@ import { BasicResource } from '../../core/model/swapi/basic-resource';
 @Component({
   selector: 'app-card-displayer',
   templateUrl: './card-displayer.component.html',
-  styleUrls: ['./card-displayer.component.css']
+  styleUrls: ['./card-displayer.component.scss']
 })
 export class CardDisplayerComponent implements OnInit {
 

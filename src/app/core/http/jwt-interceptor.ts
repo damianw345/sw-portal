@@ -4,11 +4,13 @@ import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
+import { UserService } from '../service/user.service';
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
 
   constructor(private auth: AuthService,
+              private userService: UserService,
               private router: Router) {
   }
 
@@ -32,7 +34,7 @@ export class JwtInterceptor implements HttpInterceptor {
         }, (err: any) => {
           if (err instanceof HttpErrorResponse) {
             if (err.status === 401) {
-              this.auth.clearToken();
+              this.userService.logout();
               this.router.navigate(['login']);
             }
           }

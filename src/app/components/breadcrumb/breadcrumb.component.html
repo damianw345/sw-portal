@@ -1,9 +1,8 @@
-<div [hidden]="!(breadcrumbs && breadcrumbs.length > 1)">
+<div>
   <ul class="breadcrumb">
-    <li *ngFor="let breadcrumb of breadcrumbs"
-        class="breadcrumb-item">
+    <li *ngFor="let breadcrumb of breadcrumbs" class="breadcrumb-item">
       <a routerLink="{{breadcrumb.url}}">
-        {{ breadcrumb.label }}
+        {{ breadcrumb.label | titlecase}}
       </a>
     </li>
   </ul>

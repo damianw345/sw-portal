@@ -14,10 +14,6 @@ export default class Utils {
       input.substring(1).replace(/_/g, ' ');
   }
 
-  static firstLetterToUppercase(s: string): string {
-    return s[0].toUpperCase() + s.slice(1);
-  }
-
   static getDecodedJwtJson(token: string): JwtJson | null {
     try {
       return jwtDecode(token);

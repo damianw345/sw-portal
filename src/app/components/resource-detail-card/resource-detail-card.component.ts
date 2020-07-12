@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SwapiService } from '../../core/http/swapi.service';
 import Utils from '../../utils';
+import { BasicResource } from '../../core/model/swapi/basic-resource';
 
 @Component({
   selector: 'app-resource-detail-card',
@@ -26,8 +27,8 @@ export class ResourceDetailCardComponent implements OnInit {
     this.imageUrl = `assets/img/${resourceType}/${id}.jpg`;
 
     this.swapiService.getResource(Utils.mapResourceType(resourceType), +id)
-      .subscribe(resource => {
-        this.resourceName = resource.name ? resource.name : resource.title;
+      .subscribe((resource: BasicResource) => {
+        this.resourceName = resource.name;
         this.resourceDetailsToShow = this.getResourceDetailsToShow(resource);
       });
   }

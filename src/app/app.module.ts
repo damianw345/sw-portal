@@ -17,6 +17,10 @@ import { MaterialModule } from './material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { JwtInterceptor } from './core/http/jwt-interceptor';
 import { OAuthCallbackComponent } from './components/oauth-callback/o-auth-callback.component';
+import { ErrorDialogComponent } from './components/message-dialog/error-dialog.component';
+import { ErrorInterceptor } from './core/http/error-interceptor';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -31,6 +35,7 @@ import { OAuthCallbackComponent } from './components/oauth-callback/o-auth-callb
     BreadcrumbComponent,
     LoginComponent,
     OAuthCallbackComponent,
+    ErrorDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,15 +43,26 @@ import { OAuthCallbackComponent } from './components/oauth-callback/o-auth-callb
     AppRoutingModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    MaterialModule
+    MaterialModule,
+    MatIconModule,
+    MatDialogModule,
+  ],
+  entryComponents: [
+    ErrorDialogComponent
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptor,
       multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
+      multi: true
     }
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

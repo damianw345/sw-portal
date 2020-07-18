@@ -4,8 +4,7 @@ import { UserService } from '../../core/service/user.service';
 import { LoginData } from '../../core/model/login-data';
 import { Router } from '@angular/router';
 import { RegistrationService } from '../../core/http/registration.service';
-import { catchError, tap } from 'rxjs/operators';
-import { throwError } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { OAuthRedirectionUrlService } from '../../core/http/o-auth-redirection-url.service';
 
 @Component({
@@ -26,8 +25,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required]
+      email: ['', [Validators.required, Validators.pattern(/^\S+@\S+\.\S+$/)]],
+      password: ['', [Validators.required, Validators.minLength(8)]]
     });
   }
 
@@ -49,14 +48,8 @@ export class LoginComponent implements OnInit {
         .pipe(
           tap(registration => {
             this.loginWithPassword();
-          }),
-          // TODO add error interceptor
-          catchError(err => {
-            console.error(err);
-            return throwError(err);
           })
-        )
-        .subscribe();
+        ).subscribe();
     }
   }
 

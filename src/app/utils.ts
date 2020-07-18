@@ -18,7 +18,7 @@ export default class Utils {
     try {
       return jwtDecode(token);
     } catch (err) {
-      console.log('Error during parsing token: ', err);
+      console.error('Error during parsing token: ', err);
       return null;
     }
   }

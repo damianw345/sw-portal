@@ -1,0 +1,16 @@
+<div>
+  <div class="row pb-4 justify-content-center">
+    <div class="col-12">
+      <p *ngIf="errorMessage?.message !== ''" class="text-center">Error message: {{ errorMessage?.message }}</p>
+      <p *ngIf="errorMessage?.details?.length > 0" class="text-center">Error details: {{ errorMessage?.details}}</p>
+      <p *ngIf="errorMessage?.refNumber !== ''" class="text-center">Error ref: {{ errorMessage?.refNumber }}</p>
+      <p *ngIf="errorMessage?.dateTime" class="text-center">Error time: {{ errorMessage?.dateTime }}</p>
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="mb-0 pb-0 ">
+      <button color="primary" mat-button mat-dialog-close mat-raised-button>CLOSE</button>
+    </div>
+  </div>
+</div>

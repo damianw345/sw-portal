@@ -11,6 +11,4 @@ export interface Vehicle extends BasicResource {
   cargoCapacity: string;
   consumables: string;
   vehicleClass: string;
-  pilots: number[];
-  films: number[];
 }

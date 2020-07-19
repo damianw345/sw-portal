@@ -9,6 +9,4 @@ export interface Planet extends BasicResource {
   terrain: string;
   surfaceWater: string;
   population: string;
-  residents: number[];
-  films: number[];
 }

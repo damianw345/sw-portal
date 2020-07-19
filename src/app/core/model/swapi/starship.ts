@@ -13,6 +13,4 @@ export interface Starship extends BasicResource {
   hyperdriveRating: string;
   MGLT: string;
   starshipClass: string;
-  pilots: number[];
-  films: number[];
 }

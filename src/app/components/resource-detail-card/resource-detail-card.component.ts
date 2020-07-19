@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { SwapiService } from '../../core/http/swapi.service';
 import Utils from '../../utils';
 import { BasicResource } from '../../core/model/swapi/basic-resource';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-resource-detail-card',
@@ -26,18 +27,20 @@ export class ResourceDetailCardComponent implements OnInit {
     const id = this.activatedRoute.snapshot.url[1].path;
     this.imageUrl = `assets/img/${resourceType}/${id}.jpg`;
 
-    this.swapiService.getResource(Utils.mapResourceType(resourceType), +id)
-      .subscribe((resource: BasicResource) => {
-        this.resourceName = resource.name;
-        this.resourceDetailsToShow = this.getResourceDetailsToShow(resource);
-      });
+    this.swapiService.getResourcesByIds(Utils.mapResourceType(resourceType), +id)
+      .pipe(
+        map((results: BasicResource[]) => results[0])
+      ).subscribe((result: BasicResource) => {
+      this.resourceName = result.name;
+      this.resourceDetailsToShow = this.getResourceDetailsToShow(result);
+    });
   }
 
   private getResourceDetailsToShow(resourceDetails) {
     return Object.entries(resourceDetails)
       .filter(([_, value]) => !Array.isArray(value))
-      .filter(([key, _]) => !['name', 'title', 'created', 'edited', 'url', 'homeworld'].includes(key))
-      .map(entry => [Utils.replaceUnderscoresAndFirstLetterToUppercase(entry[0]), entry[1]]);
+      .filter(([key, _]) => !['id', 'name', 'created', 'edited'].includes(key))
+      .map(entry => [Utils.camelCaseToSentenceCase(entry[0]), entry[1]]);
   }
 
   setDefaultPicture() {

@@ -10,6 +10,4 @@ export interface Species extends BasicResource {
   averageLifespan: string;
   homeWorld: number;
   language: string;
-  people: number[];
-  films: number[];
 }

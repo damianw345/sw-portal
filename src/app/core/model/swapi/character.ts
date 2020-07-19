@@ -9,9 +9,5 @@ export interface Character extends BasicResource {
   eyeColor: string;
   birthYear: string;
   gender: string;
-  homeWorld: string;
-  films: number[];
-  species: number[];
-  vehicles: number[];
-  starships: number[];
+  homeWorld: number;
 }

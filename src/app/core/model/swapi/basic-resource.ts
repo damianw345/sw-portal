@@ -1,6 +1,12 @@
 export interface BasicResource {
   id: number;
-  name: string;
   created: Date;
   edited: Date;
+  name: string;
+  films: number[];
+  starships: number[];
+  vehicles: number[];
+  species: number[];
+  characters: number[];
+  planets: number[];
 }

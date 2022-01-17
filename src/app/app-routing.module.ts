@@ -120,8 +120,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes/*, {enableTracing: true}*/ // <-- TODO remove as it's for debugging purposes only
-  )],
+  imports: [RouterModule.forRoot(routes /*, {enableTracing: true}*/ // <-- TODO remove as it's for debugging purposes only
+    , {relativeLinkResolution: 'legacy'})],
   exports: [RouterModule]
 })
 export class AppRoutingModule {

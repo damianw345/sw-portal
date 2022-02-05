@@ -1,16 +1,22 @@
-<div *ngIf="resourceDetailsToShow">
+<div *ngIf="resource$ | async as resource">
   <app-breadcrumb></app-breadcrumb>
   <div class="content">
     <div class="card mb-3">
       <div class="row no-gutters">
         <div class="col-md-5">
-          <img (error)="setDefaultPicture()" [src]="imageUrl" alt="Resource image" class="card-img">
+          <img (error)="setErrorPicture()" [src]="imageUrl" alt="Resource image" class="card-img">
         </div>
         <div class="col-md-7 pl-1 pt-0 card-body">
-          <h3 class="card-title">{{resourceName }}</h3>
-          <p *ngFor="let detail of resourceDetailsToShow"><strong>{{detail[0]}}:</strong> {{detail[1]}}</p>
+          <h3 class="card-title">{{resource.name }}</h3>
+          <p *ngFor="let detail of getResourceDetailsToShow(resource)"><strong>{{detail[0]}}:</strong> {{detail[1]}}</p>
         </div>
       </div>
     </div>
+
+    <ng-container *ngFor="let resourceType of resourceTypes">
+      <app-resource-related *ngIf="resource[resourceType]?.length"
+                            [resourceIds]="resource[resourceType]"
+                            [resourceType]="resourceType"></app-resource-related>
+    </ng-container>
   </div>
 </div>

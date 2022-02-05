@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { SwapiService } from '../../core/http/swapi.service';
-import { ActivatedRoute } from '@angular/router';
 import { PageableResults } from '../../core/model/pageable-results';
 import Utils from '../../utils';
 import { BasicResource } from '../../core/model/swapi/basic-resource';
+import { PathService } from '../../core/service/path.service';
 
 @Component({
   selector: 'app-card-displayer',
@@ -20,7 +20,7 @@ export class CardDisplayerComponent implements OnInit {
 
   constructor(
     private swapiService: SwapiService,
-    private route: ActivatedRoute
+    private pathService: PathService
   ) {
   }
 
@@ -41,10 +41,10 @@ export class CardDisplayerComponent implements OnInit {
   }
 
   private updatePageItems(pageId = 1): void {
-    this.resourceType = this.route.snapshot.url[0].path;
+    this.resourceType = this.pathService.getResourceTypeFromPath();
     const path = Utils.mapResourceType(this.resourceType);
 
-    this.swapiService.getResources(path, pageId).subscribe((pageableResults: PageableResults) => {
+    this.swapiService.getResources$(path, pageId).subscribe((pageableResults: PageableResults) => {
       this.pageResults = pageableResults.content;
       this.totalItems = pageableResults.totalElements;
       this.currentPage = pageId;

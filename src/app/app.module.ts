@@ -21,6 +21,7 @@ import { ErrorDialogComponent } from './components/message-dialog/error-dialog.c
 import { ErrorInterceptor } from './core/http/error-interceptor';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ResourceRelatedComponent } from './components/resource-related/resource-related.component';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     LoginComponent,
     OAuthCallbackComponent,
     ErrorDialogComponent,
+    ResourceRelatedComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { SwapiService } from '../../core/http/swapi.service';
 import Utils from '../../utils';
 import { BasicResource } from '../../core/model/swapi/basic-resource';
-import { map } from 'rxjs/operators';
+import { PathService } from '../../core/service/path.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-resource-detail-card',
@@ -12,38 +12,45 @@ import { map } from 'rxjs/operators';
 })
 export class ResourceDetailCardComponent implements OnInit {
 
-  private resourceName: string;
-  private imageUrl: string;
+  resourceTypes = [
+    'films',
+    'starships',
+    'vehicles',
+    'species',
+    'characters',
+    'planets  '
+  ];
 
-  resourceDetailsToShow: any;
+  id: string;
+  resourceType: string;
+  resource$: Observable<BasicResource>;
+
+  imageUrl: string;
 
   constructor(private swapiService: SwapiService,
-              private activatedRoute: ActivatedRoute) {
+              private pathService: PathService) {
+  }
+
+  private get _imageUrl(): string {
+    return `assets/img/${this.resourceType}/${this.id}.jpg`;
   }
 
   ngOnInit() {
+    this.resourceType = this.pathService.getResourceTypeFromPath();
+    this.id = this.pathService.getIdFromPath();
+    this.imageUrl = this._imageUrl;
 
-    const resourceType = this.activatedRoute.snapshot.url[0].path;
-    const id = this.activatedRoute.snapshot.url[1].path;
-    this.imageUrl = `assets/img/${resourceType}/${id}.jpg`;
-
-    this.swapiService.getResourcesByIds(Utils.mapResourceType(resourceType), +id)
-      .pipe(
-        map((results: BasicResource[]) => results[0])
-      ).subscribe((result: BasicResource) => {
-      this.resourceName = result.name;
-      this.resourceDetailsToShow = this.getResourceDetailsToShow(result);
-    });
+    this.resource$ = this.swapiService.getResourceById$(Utils.mapResourceType(this.resourceType), this.id);
   }
 
-  private getResourceDetailsToShow(resourceDetails) {
+  getResourceDetailsToShow(resourceDetails: any) {
     return Object.entries(resourceDetails)
       .filter(([_, value]) => !Array.isArray(value))
       .filter(([key, _]) => !['id', 'name', 'created', 'edited'].includes(key))
       .map(entry => [Utils.camelCaseToSentenceCase(entry[0]), entry[1]]);
   }
 
-  setDefaultPicture() {
+  setErrorPicture() {
     this.imageUrl = Utils.defaultImageUrl;
   }
 }
